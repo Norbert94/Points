@@ -10,10 +10,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@XmlRootElement(name = "person")
+@XmlRootElement(name = "transaction")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Transaction {
 
+    //Used to increment the ID for every new transaction. Similar to how the database would work.
     private static final AtomicInteger count = new AtomicInteger(0);
 
     @Hidden
@@ -21,7 +22,8 @@ public class Transaction {
 
     private String payer;
     private Integer points;
-
+    
+    //Making sure that the date is formatted in a way we expect.
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date timestamp;
 
